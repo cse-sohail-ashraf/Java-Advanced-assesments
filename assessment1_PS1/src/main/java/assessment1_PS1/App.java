@@ -20,6 +20,18 @@ public class App {
     		em.persist(employee);
     		idcard.setEmployee(employee);
     		em.getTransaction().commit();
+    		
+    		System.out.println("Employee Created Successfully");
+    		Employee findEmp  = em.find(Employee.class, employee.getId());
+    		System.out.println("Employee Details:");
+    		System.out.println("Id: " + findEmp.getId());
+    		System.out.println("Name: " + findEmp.getName());
+    		System.out.println("Email: " + findEmp.getEmail());
+    		
+    		IDCard findIdcard = em.find(IDCard.class, idcard.getId());
+    		System.out.println("ID Card Details: ");
+    		System.out.println("Card Number: " + findIdcard.getCardNumber());
+    		System.out.println("Issue Date: " + findIdcard.getIssueDate());
     	}catch(Exception e) {
     		System.out.println(e.getMessage());
     		e.printStackTrace();
